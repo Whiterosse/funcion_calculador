@@ -14,14 +14,31 @@ def calculadora(num1, num2, operacion):
         return num1 * num2
     elif operacion == "/":
         if num2 == 0:
-            return "Valor errado,  divisor no puede ser cero (0)"
+            return "Operacion invalida"
         return num1 / num2
     else:
-        return "Operacion invalida"
-
+        return "Error de datos"
+    
 num1 = float(input("Ingresa el valor 1: "))
-num2 = float(input("Ingresa el valor 2: "))
-operacion = (input("Ingresa el tipo de operacion: "))
+num2 = float(input("Ingresa el dato a evaluar: "))
+operacion = input("Ingresa el tipo de operacion: + , - , * , / ")
+print("El resultado es: " , calculadora(num1,num2,operacion))
 
-print("Resultado es: " , calculadora(num1, num2, operacion))
+while True:
+    operacion = input("Ingresa la operación (+, -, *, /) o escribe 'salir' para terminar: ")
+    
+    if operacion.lower() == "salir":
+        print("Calculadora finalizada. ¡Hasta luego!")
+        break
+
+    try:
+        num1 = float(input("Ingresa el primer número: "))
+        num2 = float(input("Ingresa el segundo número: "))
+    except ValueError:
+        print("Error: Debes ingresar números válidos.")
+        continue
+
+    resultado = calculadora(num1, num2, operacion)
+    print("Resultado:", resultado)
+    print("-" * 30)
 
